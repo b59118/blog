@@ -33,7 +33,7 @@ jobs:
          npm install
          cat _config.yml
          git clone --branch v7.8.0  https://github.com/theme-next/hexo-theme-next.git themes/next
-         
+         sed -i 's/landscape/next/g' _config.yml
          hexo g
          ls 
          uname -a 
