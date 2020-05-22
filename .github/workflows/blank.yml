@@ -38,7 +38,7 @@ jobs:
          sed -i 's/landscape/next/g' _config.yml
          
          # copy documents to post
-         
+         cp ../documents/*.md source/_posts/ -rf
          hexo g
          ls 
          uname -a 
