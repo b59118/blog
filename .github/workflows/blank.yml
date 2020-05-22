@@ -33,9 +33,9 @@ jobs:
          cd tmpdir
          npm install
          #cat _config.yml
-         git clone --branch v7.8.0  https://github.com/theme-next/hexo-theme-next.git themes/next
+         #git clone --branch v7.8.0  https://github.com/theme-next/hexo-theme-next.git themes/next
          # change theme to next
-         sed -i 's/landscape/next/g' _config.yml
+         #sed -i 's/landscape/next/g' _config.yml
          
          # copy documents to post
          cp ../documents/*.md source/_posts/ -rf
