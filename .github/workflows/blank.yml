@@ -1,0 +1,48 @@
+name: GitHub Actions Build and Deploy
+on:
+  push:
+    branches:
+
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1. git checkout...
+      uses: actions/checkout@v1
+    - name: 2. setup nodejs...
+      uses: actions/setup-node@v1
+    - name: 3. install hexo...
+
+      run: |
+        npm install hexo-cli -g
+        #npm i -S hexo-prism-plugin -g
+        #npm install hexo-generator-search --save -g
+        #npm i hexo-permalink-pinyin  -g
+        #npm i --save hexo-wordcount -g
+        #npm install hexo-filter-github-emojis  -g
+        #npm install hexo-generator-feed  -g
+        npm install hexo
+        hexo -v
+    - name: 4. hexo generate public files...
+
+      run: |
+         hexo init tmpdir
+         cd tmpdir
+         npm install
+         hexo g
+         ls 
+         uname -a 
+         pwd
+    - name: Commit files
+      run: |
+        pwd
+        cd tmpdir/public
+        git init
+        git config --local user.email "1183561811@qq.com"
+        git config --local user.name "b59118"
+        git add . 
+        git commit -m "Add changes" -a
+        git push --force https://${{ secrets.IO }}@github.com/b59118/b59118.github.io master
+
