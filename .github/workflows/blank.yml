@@ -31,6 +31,9 @@ jobs:
          hexo init tmpdir
          cd tmpdir
          npm install
+         cat _config.yml
+         git clone --branch v7.8.0  https://github.com/theme-next/hexo-theme-next.git themes/next
+         
          hexo g
          ls 
          uname -a 
@@ -45,3 +48,4 @@ jobs:
         git add . 
         git commit -m "Add changes" -a
         git push --force https://${{ secrets.IO }}@github.com/b59118/b59118.github.io master
+
