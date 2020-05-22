@@ -2,7 +2,6 @@ name: GitHub Actions Build and Deploy
 on:
   push:
     branches:
-
       - master
 
 jobs:
@@ -23,8 +22,9 @@ jobs:
         #npm i --save hexo-wordcount -g
         #npm install hexo-filter-github-emojis  -g
         #npm install hexo-generator-feed  -g
-        npm install hexo
+        #npm install hexo
         hexo -v
+        pwd
     - name: 4. hexo generate public files...
 
       run: |
@@ -45,4 +45,3 @@ jobs:
         git add . 
         git commit -m "Add changes" -a
         git push --force https://${{ secrets.IO }}@github.com/b59118/b59118.github.io master
-
