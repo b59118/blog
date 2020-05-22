@@ -25,6 +25,7 @@ jobs:
         #npm install hexo
         hexo -v
         pwd
+        ls
     - name: 4. hexo generate public files...
 
       run: |
@@ -33,11 +34,17 @@ jobs:
          npm install
          #cat _config.yml
          git clone --branch v7.8.0  https://github.com/theme-next/hexo-theme-next.git themes/next
+         # change theme to next
          sed -i 's/landscape/next/g' _config.yml
+         
+         # copy documents to post
+         
          hexo g
          ls 
          uname -a 
          pwd
+         echo ls source
+         ls source
     - name: Commit files
       run: |
         pwd
